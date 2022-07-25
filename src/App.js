@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Invoices from './pages/Invoices';
 import Onboard from './pages/Onboard';
+import Dick from './pages/Dick';
+import StyleComponent from './pages/StyleComponent';
+import ScanQrCode from './pages/ScanQrcode';
 
 
 function App() {
@@ -25,9 +28,11 @@ function App() {
             }
           />
           <Route path="/onboard" element={<Onboard />} />
+          <Route path="/dick" element={<Dick />} />
+          <Route path="/style_component" element={<StyleComponent />} />
+          <Route path="/scan-qrcode" element={<ScanQrCode />} />
         </Routes>
       </main>
-      fuck u yang
     </div>
   );
 }

@@ -1,5 +1,5 @@
 // import { Link } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useMatch } from 'react-router-dom';
 // use more path with id
 import { getInvoices } from '../../data';
 
@@ -19,7 +19,7 @@ export default function Header(props) {
                 invoices list
                 <ul className="App-header-invoices-wrap">
                     {invoices.map((invoice, i) => (
-                        <li className={`App-header-invoices-wrap-li-${i + 1}`}>
+                        <li className={`App-header-invoices-wrap-li-${i + 1}`} key={invoice.number}>
                             <NavLink
                                 to={`/invoices/${invoice.number}`}
                                 key={invoice.number}
@@ -33,8 +33,11 @@ export default function Header(props) {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </div>scan-qrcode
             <NavLink className={({ isActive }) => isActive ? 'App-header-active' : 'App-header-item'} to="/onboard">go onboard</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'App-header-active' : 'App-header-item'} to="/dick">Dick</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'App-header-active' : 'App-header-item'} to="/style_component">StyleComponent</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'App-header-active' : 'App-header-item'} to="/scan-qrcode">Scan QR code</NavLink>
         </header>
     )
 }
