@@ -1,71 +1,15 @@
 import { useEffect, useState, useRef } from 'react';
-import { QrReader } from 'react-qr-reader';
-// import QrReader from 'react-qr-scanner';
-import { BrowserQRCodeReader } from "@zxing/library";
-
-const previewStyle = {
-    height: 240,
-    width: 320,
-}
-const codeReader = new BrowserQRCodeReader();
-console.log(codeReader);
-
-function QRCodeReader({ onResult }) {
-    const lastResult = useRef()
-
-    const onReadResult = (result, error) => {
-        if (!result) return;
-        if (lastResult.current === result.text) {
-            return
-        }
-        lastResult.current = result.text;
-        onResult(result.text);
-    };
-
-    useEffect(() => {
-        console.log('load scan');
-        return () => {
-            console.log('scan close');
-        }
-    }, [])
-
-    return (
-        <QrReader onResult={onReadResult} style={{ width: '300px', height: '100px' }} />
-    )
-}
+import { BrowserQRCodeReader } from '@zxing/browser';
 
 
 export default function ScanQrCode() {
-
     const [data, setData] = useState('No result');
-    const [qrShow, QrShow] = useState(false);
-    const [shouldRender, setShouldRender] = useState(false)
-    const lastResult = useRef();
     const videoRef = useRef(null)
     const controlRef = useRef(null);
 
     useEffect(() => {
         console.log(data, 'data');
     }, [data])
-
-    const handleScan = (result) => {
-        console.log(result, 'handle scan');
-        if (!result) return;
-
-        if (lastResult.current === result.text) {
-            return
-        }
-
-        lastResult.current = result.text;
-        setData(result.text);
-    }
-    const handleError = (err) => {
-        console.error(err, 'handle error')
-    }
-
-    useEffect(() => {
-        console.log(controlRef, 'controlRef');
-    }, [controlRef])
 
     return (
         <div>
@@ -78,7 +22,7 @@ export default function ScanQrCode() {
                         // use the result and error values to choose your actions
                         // you can also use controls API in this scope like the controls
                         // returned from the method.
-                        // console.log(result, error, controls);
+                        controlRef.current = controls
                         if (error) {
                             return
                         }
@@ -92,68 +36,18 @@ export default function ScanQrCode() {
                 Barcode scan
             </button>
             <button onClick={() => {
-                const codeReader = new BrowserQRCodeReader();
-                console.log(codeReader, 'codeReader');
-                console.log(controlRef, 'controlRef');
-                codeReader.reset();
-                codeReader.stopAsyncDecode();
-                codeReader.stopStreams();
-                codeReader.stopContinuousDecode();
-                console.log(videoRef, 'videoRef');
-                videoRef.current = null
+                if (controlRef.current) {
+                    controlRef.current.stop();
+                    controlRef.current = null;
+                }
             }}>
-                check ref
+                reset
             </button>
             <video
                 style={{ maxWidth: "200px", maxHeight: "200px", height: "200px" }}
                 ref={videoRef}
             />
-            <button
-                onClick={() => {
-                    QrShow(!qrShow);
-                }}
-            >
-                打開相機
-            </button>
-            {qrShow && (
-                <QrReader
-                    className='qr-container'
-                    onResult={(result, error) => {
-                        // console.log(result, error);
-                        // if (!!result) {
-                        //     setData(result?.text);
-                        // }
-                        if (!qrShow) {
-                            return
-                        }
-                        if (!result) return;
-
-                        if (lastResult.current === result.text) {
-                            return
-                        }
-
-                        lastResult.current = result.text;
-                        setData(result.text);
-                    }}
-                    scanDelay={200}
-                    style={{ width: '300px', height: '100px' }}
-                />
-            )}
-            <p>{data}</p>
-            {shouldRender && <QRCodeReader onResult={setData} />}
-            <button onClick={() => setShouldRender(!shouldRender)}>
-                Render QR Reader
-            </button>
-            {/* <QrReader
-                delay={100}
-                style={previewStyle}
-                onError={handleError}
-                onScan={handleScan}
-                onLoad={(load) => {
-                    console.log(load, 'load');
-                }}
-            /> */}
-            <p>{data}</p>
+            <p>scan result : {data}</p>
         </div>
     )
 }

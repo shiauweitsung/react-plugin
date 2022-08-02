@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { init, useConnectWallet, useSetChain } from '@web3-onboard/react'
+import Onboard from '@web3-onboard/core'
 import injectedModule from '@web3-onboard/injected-wallets'
 import { ethers } from 'ethers'
 import onboardIcon from '../../images/dick.png';
 import walletAddressValidatorMinJs from '@swyftx/api-crypto-address-validator/dist/wallet-address-validator.min.js'
+import { carbonWallet } from './injectCarbon';
 
-const injected = injectedModule();
+const injected = injectedModule({
+    custom: [carbonWallet],
+});
 
 // const infuraKey = '<INFURA_KEY>';
 const rpcUrl = `https://mainnet.infura.io/v3`;
+const delay = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 // initialize Onboard
 init({
@@ -43,8 +50,8 @@ init({
     }
 })
 
-export default function Onboard() {
-    const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+export default function Onboards() {
+    const [{ wallet, connecting }, connect, disconnect, updateBalances] = useConnectWallet();
     const [
         {
             // chains, // the list of chains that web3-onboard was initialized with
@@ -76,6 +83,10 @@ export default function Onboard() {
         }
     }
 
+    useEffect(() => {
+        console.log(wallet, 'wallet');
+    }, [wallet]);
+
     return (
         <div>
             connect wallet page
@@ -84,6 +95,11 @@ export default function Onboard() {
                 onClick={() => (wallet ? disconnect({ label: wallet.label }) : connect())}
             >
                 {connecting ? 'connecting' : wallet ? 'disconnect' : 'connect'}
+            </button>
+            <button onClick={() => {
+                updateBalances();
+            }}>
+                update balance
             </button>
             <button onClick={async () => {
                 await setChain({

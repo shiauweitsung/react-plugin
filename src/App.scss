@@ -10,9 +10,8 @@
   src: url('./assets/fonts/Semi.otf') format('truetype');
 }
 
-$header-bgc:#61dafb;
-$header-hover:#80d1e8;
-$header-li-hover:#7fb6c6;
+@import './components/Header/styles.scss';
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -29,96 +28,6 @@ input::-webkit-inner-spin-button {
   pointer-events: none;
 }
 
-.App-header{
-  background-color: $header-bgc;
-  display: flex;
-  align-items: center;
-  padding: 0px 30px;
-  &>a{
-    margin-right: 10px;
-    padding: 15px 12px;
-    &:hover{
-      background-color: $header-hover;
-      color: white;
-    }
-  }
-  &-active{
-    color: #ffffff;
-  }
-  &-item{
-    &:visited{
-      color: rgb(0, 0, 0);
-    }
-  }
-  &-invoices{
-    $self: &;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    perspective: 1000px;
-    z-index: 100;
-    @keyframes menuShow {
-      0% {
-        transform: scaleY(0)
-      }
-      80% {
-          transform: scaleY(1.1)
-      }
-      100% {
-          transform: scaleY(1)
-      }
-    }
-    // 如果是整列動畫 需要對ul增加動畫
-    // 如果是針對每一列增加動畫 需要對li增加動畫
-    &:hover{
-      background-color: $header-hover;
-      color: white;
-      cursor: pointer;
-      & .App-header-invoices-wrap {
-        // animation: menuShow 1s ease-in-out forwards;
-        // transform-origin: top center;
-        &>li{
-          display: block;
-          opacity: 1;
-          
-        }
-        @for $i from 1 through 5{
-          &-li-#{$i}{
-            transform-origin: top center;
-            animation: translateX 300ms ($i * 50ms) ease-in-out forwards;
-          }
-        }
-      }
-    }
-
-    &>ul{
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      // background-color: $header-bgc;
-      perspective: 1000px;
-      z-index: -1;
-      margin: 0;
-      padding-left: 0;
-      &>li{
-        display: none;
-        background-color: $header-hover;
-        padding: 10px 20px;
-        opacity: 0;
-        list-style: none;
-        &:hover{
-          background-color: $header-li-hover;
-        }
-        &>a{
-          color: #34495e;
-        }
-      }
-    }
-  }
-}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
