@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <Header content="我是header props" />
-      <main>
+      <main className="container">
         <Routes>
           <Route path="/" element={<Home a="錯誤網址傳進來的值" />} />
           <Route path="/about" element={<About />} />

@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400;500;600;700&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
+
 @font-face {
   font-family: 'Dick';
   font-style: italic;
   src: url('./assets/fonts/DR-Pecker.otf') format('truetype');
 }
+
 @font-face {
   font-family: 'Semi';
   font-style: italic;
@@ -11,6 +13,7 @@
 }
 
 @import './components/Header/styles.scss';
+@import './pages/Onboard/styles.scss';
 
 
 input::-webkit-outer-spin-button,
@@ -38,6 +41,7 @@ input::-webkit-inner-spin-button {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -48,7 +52,7 @@ input::-webkit-inner-spin-button {
     opacity: 0;
     transform: translateX(60px);
   }
-  
+
   80% {
     transform: translateX(-5px);
   }
@@ -59,24 +63,30 @@ input::-webkit-inner-spin-button {
   }
 }
 
-.dick{
+.container {
+  padding-left: 150px;
+}
+
+.dick {
   height: calc(100vh - 80px);
   font-family: 'Edu VIC WA NT Beginner', cursive;
 
-  &-title{
+  &-title {
     font-family: 'Dick';
     font-weight: 600;
     font-size: 60px;
     margin-bottom: 20px;
   }
-  &-container{
+
+  &-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100%;
   }
-  &-form{
+
+  &-form {
     border-radius: 4px;
     padding: 1rem;
     max-width: 600px;
@@ -86,20 +96,23 @@ input::-webkit-inner-spin-button {
     padding-top: 30px;
     padding-bottom: 100px;
     font-size: 20px;
-    &-item{
+
+    &-item {
       max-width: 300px;
       width: 100%;
       display: flex;
       flex-direction: column;
       margin: auto;
-      & label{
+
+      & label {
         display: block;
         text-align: left;
         margin-bottom: 5px;
         color: #ffffff;
         font-weight: 600;
       }
-      & input{
+
+      & input {
         margin-bottom: 5px;
         height: 28px;
         border: none;
@@ -107,69 +120,84 @@ input::-webkit-inner-spin-button {
         padding-left: 12px;
         border-radius: 5000px;
         backdrop-filter: blur(5px);
-        box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
+        box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
         transition: all 0.2s ease-in-out;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
         &:hover {
           // background: rgba(255,255,255,0.1);
-          box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
+          box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
           outline: none;
         }
+
         &:focus {
           // background: rgba(255,255,255,0.1);
           outline: none;
-          box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
+          box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
         }
       }
     }
   }
-  &-time{
+
+  &-time {
     color: white;
     margin: 10px;
     font-size: 1rem;
-    &>p{
+
+    &>p {
       font-weight: 600;
     }
   }
-  &-start{
+
+  &-start {
     position: relative;
-    &>p{
+
+    &>p {
       color: white;
       font-size: 1.2rem;
     }
   }
-  &-son{
+
+  &-son {
     opacity: 0;
-    &.fire{
-      animation: fire 2s ease-in-out ;
+
+    &.fire {
+      animation: fire 2s ease-in-out;
       position: absolute;
       top: 50%;
+
       @keyframes fire {
-        from{
+        from {
           opacity: 1;
         }
-        to{
+
+        to {
           opacity: 0;
-          transform: translate(30px,-30px);
+          transform: translate(30px, -30px);
         }
       }
     }
   }
-  &-img{
+
+  &-img {
     transform: rotate(90deg);
-    &.animation{
+
+    &.animation {
       animation: dickScale 1s ease-in-out infinite alternate forwards;
     }
+
     @keyframes dickScale {
-      from{
+      from {
         transform: rotate(90deg) scale(0.9);
       }
-      to{
+
+      to {
         transform: rotate(90deg) scale(1.2);
       }
     }
   }
-  &-button{
+
+  &-button {
     position: absolute;
     bottom: 25px;
     left: 50%;
@@ -182,17 +210,20 @@ input::-webkit-inner-spin-button {
     font-weight: 900;
     background-color: transparent;
     color: white;
-    border:1px solid white;
+    border: 1px solid white;
     border-radius: 20px;
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: all .2s;
-    &:hover{
+
+    &:hover {
       font-size: 2rem;
     }
-    &.disabled{
+
+    &.disabled {
       background-color: grey;
-      &:hover{
+
+      &:hover {
         font-size: 1rem;
       }
     }
@@ -200,18 +231,20 @@ input::-webkit-inner-spin-button {
 }
 
 //onboard css style
-.section.svelte-101xq62{
+.section.svelte-101xq62 {
   background-color: black !important;
 }
-.background.svelte-101xq62{
+
+.background.svelte-101xq62 {
   background-color: black !important;
 }
-.fixed{
+
+.fixed {
   background-color: black !important;
 }
 
 //qr code scanner
-.qr-container{
+.qr-container {
   width: 200px;
   height: 200px;
 }
