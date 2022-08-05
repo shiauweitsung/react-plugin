@@ -20,10 +20,16 @@
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
     "classnames": "^2.3.1",
+    "eslint": "^8.0.1",
+    "eslint-plugin-react": "^7.30.1",
     "ethers": "^5.6.9",
+    "i18next": "^21.8.16",
+    "i18next-browser-languagedetector": "^6.1.4",
+    "i18next-http-backend": "^1.4.1",
     "react": "^18.1.0",
     "react-barcode-scanner-webcam": "^1.0.3",
     "react-dom": "^18.1.0",
+    "react-i18next": "^11.18.3",
     "react-qr-barcode-scanner": "^1.0.6",
     "react-qr-reader": "^3.0.0-beta-1",
     "react-qr-scanner": "^1.0.0-alpha.8",
@@ -43,7 +49,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "eslintConfig": {
     "extends": [
@@ -62,5 +69,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0"
   }
 }

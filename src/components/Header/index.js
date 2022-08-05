@@ -1,62 +1,67 @@
 // import { Link } from 'react-router-dom';
-import { NavLink, useMatch } from 'react-router-dom';
+import { NavLink, useMatch } from 'react-router-dom'
 // use more path with id
-import { getInvoices } from '../../data';
-import { useSelector } from 'react-redux';
-import { getHederShow } from '../../store/status';
-import { ReactComponent as Pumpkin } from '../../assets/images/pumpkin.svg';
+import { getInvoices } from '../../data'
+import { useSelector } from 'react-redux'
+import { getHederShow } from '../../store/status'
+import { ReactComponent as Pumpkin } from '../../assets/images/pumpkin.svg'
 
 const headerData = [
-    {
-        icon: <Pumpkin className="sidebar-list-icon" />,
-        name: 'About',
-        to: '/about',
-    },
-    {
-        icon: <Pumpkin className="sidebar-list-icon" />,
-        name: 'Home',
-        to: '/home',
-    },
-    {
-        icon: <Pumpkin className="sidebar-list-icon" />,
-        name: 'Onboard',
-        to: '/onboard',
-    },
-    {
-        icon: <Pumpkin className="sidebar-list-icon" />,
-        name: 'Dick',
-        to: '/dick',
-    },
-    {
-        icon: <Pumpkin className="sidebar-list-icon" />,
-        name: 'Style Com',
-        to: '/style_component',
-    },
-    {
-        icon: <Pumpkin className="sidebar-list-icon" />,
-        name: 'Scan QR',
-        to: '/scan-qrcode',
-    },
-    {
-        icon: <Pumpkin className="sidebar-list-icon" />,
-        name: 'Redux',
-        to: '/redux',
-    },
-    {
-        icon: <Pumpkin className="sidebar-list-icon" />,
-        name: 'Typescript',
-        to: '/typescript',
-    },
+  {
+    icon: <Pumpkin className="sidebar-list-icon" />,
+    name: 'About',
+    to: '/about'
+  },
+  {
+    icon: <Pumpkin className="sidebar-list-icon" />,
+    name: 'Home',
+    to: '/home'
+  },
+  {
+    icon: <Pumpkin className="sidebar-list-icon" />,
+    name: 'Onboard',
+    to: '/onboard'
+  },
+  {
+    icon: <Pumpkin className="sidebar-list-icon" />,
+    name: 'Dick',
+    to: '/dick'
+  },
+  {
+    icon: <Pumpkin className="sidebar-list-icon" />,
+    name: 'Style Com',
+    to: '/style_component'
+  },
+  {
+    icon: <Pumpkin className="sidebar-list-icon" />,
+    name: 'Scan QR',
+    to: '/scan-qrcode'
+  },
+  {
+    icon: <Pumpkin className="sidebar-list-icon" />,
+    name: 'Redux',
+    to: '/redux'
+  },
+  {
+    icon: <Pumpkin className="sidebar-list-icon" />,
+    name: 'Typescript',
+    to: '/typescript'
+  },
+  {
+    icon: <Pumpkin className="sidebar-list-icon" />,
+    name: 'Translate',
+    to: '/translate'
+  }
 ]
 
-export default function Header(props) {
-    let invoices = getInvoices();
-    let headerActive = {
-        color: 'white'
-    }
-    const headerShow = useSelector(getHederShow);
+export default function Header (props) {
+  const invoices = getInvoices()
+  const headerActive = {
+    color: 'white'
+  }
+  const headerShow = useSelector(getHederShow)
 
-    return (
+  return (
         <header className="App-header">
             {/* 此時的invoices /之後的變數 都是帶入params的參數 */}
             <NavLink className={({ isActive }) => isActive ? 'App-header-active' : 'App-header-item'} to="/invoices/invoicesIn">go invoices/:invoiceId</NavLink>
@@ -83,15 +88,15 @@ export default function Header(props) {
             <div className="sidebar">
                 <ul className="sidebar-list">
                     {headerData.map((item, index) => {
-                        return (
+                      return (
                             <li key={index}>
                                 {item.icon}
                                 <NavLink className={({ isActive }) => isActive ? 'App-header-active' : 'App-header-item'} to={item.to}>{item.name}</NavLink>
                             </li>
-                        )
+                      )
                     })}
                 </ul>
             </div>
         </header>
-    )
+  )
 }

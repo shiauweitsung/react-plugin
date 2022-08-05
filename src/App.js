@@ -1,17 +1,19 @@
-import './App.scss';
-import { Route, Routes, Navigate } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './pages/Home';
-import About from './pages/About';
-import Invoices from './pages/Invoices';
-import Onboards from './pages/Onboard';
-import Dick from './pages/Dick';
-import StyleComponent from './pages/StyleComponent';
-import ScanQrCode from './pages/ScanQrcode';
-import Redux from './pages/Redux';
-import TypeScriptCom from './pages/Typescripts';
+import './App.scss'
+import { Route, Routes, Navigate } from 'react-router-dom'
+import './i18n'
+import Header from './components/Header'
+import Home from './pages/Home'
+import About from './pages/About'
+import Invoices from './pages/Invoices'
+import Onboards from './pages/Onboard'
+import Dick from './pages/Dick'
+import StyleComponent from './pages/StyleComponent'
+import ScanQrCode from './pages/ScanQrcode'
+import Redux from './pages/Redux'
+import TypeScriptCom from './pages/Typescripts'
+import Translate from './pages/Translate'
 
-function App() {
+function App () {
   return (
     <div className="App">
       <Header content="我是header props" />
@@ -40,10 +42,11 @@ function App() {
           <Route path="/scan-qrcode" element={<ScanQrCode />} />
           <Route path="/redux" element={<Redux />} />
           <Route path="/typescript" element={<TypeScriptCom />} />
+          <Route path="/translate" element={<Translate />} />
         </Routes>
       </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
