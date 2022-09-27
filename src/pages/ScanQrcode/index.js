@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { BrowserQRCodeReader } from '@zxing/browser'
 
 export default function ScanQrCode () {
@@ -28,6 +28,7 @@ export default function ScanQrCode () {
                   if (result) {
                     setData(result.text)
                     console.log(result, controls)
+                    controls.stop()
                   }
                   controlRef.current = controls
                 })

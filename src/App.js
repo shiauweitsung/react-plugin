@@ -1,5 +1,5 @@
 import './App.scss'
-import { Route, Routes, Navigate } from 'react-router-dom'
+import React, { Route, Routes, Navigate } from 'react-router-dom'
 import './i18n'
 import Header from './components/Header'
 import Home from './pages/Home'
@@ -12,8 +12,9 @@ import ScanQrCode from './pages/ScanQrcode'
 import Redux from './pages/Redux'
 import TypeScriptCom from './pages/Typescripts'
 import Translate from './pages/Translate'
+import FormikForm from './pages/Formik'
 
-function App () {
+function App() {
   return (
     <div className="App">
       <Header content="我是header props" />
@@ -32,10 +33,7 @@ function App () {
               </main>
             }
           /> */}
-          <Route
-            path="*"
-            element={<Navigate to="/" replace />}
-          />
+          <Route path="*" element={<Navigate to="/" replace />} />
           <Route path="/onboard" element={<Onboards />} />
           <Route path="/dick" element={<Dick />} />
           <Route path="/style_component" element={<StyleComponent />} />
@@ -43,6 +41,7 @@ function App () {
           <Route path="/redux" element={<Redux />} />
           <Route path="/typescript" element={<TypeScriptCom />} />
           <Route path="/translate" element={<Translate />} />
+          <Route path="/formik" element={<FormikForm />} />
         </Routes>
       </main>
     </div>

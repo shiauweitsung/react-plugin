@@ -23,12 +23,17 @@
     "eslint": "^8.0.1",
     "eslint-plugin-react": "^7.30.1",
     "ethers": "^5.6.9",
+    "formik": "^2.2.9",
     "i18next": "^21.8.16",
     "i18next-browser-languagedetector": "^6.1.4",
     "i18next-http-backend": "^1.4.1",
+    "joi": "^17.6.1",
+    "prettier": "^2.7.1",
+    "prettier-eslint": "^15.0.1",
     "react": "^18.1.0",
     "react-barcode-scanner-webcam": "^1.0.3",
     "react-dom": "^18.1.0",
+    "react-form-input-validation": "^2.1.0",
     "react-i18next": "^11.18.3",
     "react-qr-barcode-scanner": "^1.0.6",
     "react-qr-reader": "^3.0.0-beta-1",
@@ -43,7 +48,8 @@
     "styled-components": "^5.3.5",
     "typescript": "^4.7.4",
     "wallet-address-validator": "^0.2.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -51,12 +57,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --fix --ext .js,.jsx ."
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

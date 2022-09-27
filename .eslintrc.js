@@ -1,3 +1,5 @@
+const { off } = require('process')
+
 module.exports = {
   env: {
     browser: true,
@@ -20,5 +22,7 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    'no-unused-vars': 'off',
+    'space-before-function-paren': 0
   }
 }

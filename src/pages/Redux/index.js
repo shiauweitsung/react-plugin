@@ -14,6 +14,7 @@ export default function Redux () {
   return (
         <div>
             <h2>Redux 練習</h2>
+            {value}
             <button
                 onClick={() => {
                   setValue((prev) => {
