@@ -1,9 +1,9 @@
-import i18n from 'i18next'
-import detector from 'i18next-browser-languagedetector'
-import { initReactI18next } from 'react-i18next'
-import backend from 'i18next-http-backend'
-import en from './en.json'
-import tw from './tw.json'
+import i18n from 'i18next';
+import detector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
+import backend from 'i18next-http-backend';
+import en from './en.json';
+import tw from './tw.json';
 
 const resource = {
   en: {
@@ -12,7 +12,7 @@ const resource = {
   tw: {
     translation: tw
   }
-}
+};
 
 i18n
   .use(detector) // detected local language
@@ -29,6 +29,6 @@ i18n
     interpolation: {
       escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
     }
-  })
+  });
 
-export default i18n
+export default i18n;

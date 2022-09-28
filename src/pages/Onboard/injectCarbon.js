@@ -20,4 +20,4 @@ export const carbonWallet = {
   }),
   // A list of platforms that this wallet supports
   platforms: ['desktop']
-}
+};

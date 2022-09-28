@@ -7,12 +7,11 @@ import {
   // FieldProps,
   ErrorMessage,
   useFormik
-} from 'formik'
-import * as Yup from 'yup'
-import React from 'react'
+} from 'formik';
+import * as Yup from 'yup';
 
 interface MyFormValues {
-  firstName: string
+  firstName: string;
 }
 
 const SignupSchema = Yup.object().shape({
@@ -20,10 +19,10 @@ const SignupSchema = Yup.object().shape({
     .min(10, 'Too Short!')
     .max(70, 'Too Long!')
     .required('Required')
-})
+});
 
-export default function FormikForm () {
-  const initialValues: MyFormValues = { firstName: '' }
+export default function FormikForm() {
+  const initialValues: MyFormValues = { firstName: '' };
   // const formiks = useFormik({
   //   initialValues: {
   //     firstName: '',
@@ -42,9 +41,9 @@ export default function FormikForm () {
         initialValues={initialValues}
         validationSchema={SignupSchema}
         onSubmit={(values, actions) => {
-          console.log({ values, actions })
-          alert(JSON.stringify(values, null, 2))
-          actions.setSubmitting(false)
+          console.log({ values, actions });
+          alert(JSON.stringify(values, null, 2));
+          actions.setSubmitting(false);
         }}
       >
         {({ errors, touched }) => (
@@ -64,5 +63,5 @@ export default function FormikForm () {
         )}
       </Formik>
     </div>
-  )
+  );
 }

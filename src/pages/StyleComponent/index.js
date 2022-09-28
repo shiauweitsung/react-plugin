@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import React from 'react'
-import rwd from './rwd'
+import styled from 'styled-components';
+import React from 'react';
+import rwd from './rwd';
 
 const Title = styled.h1`
   
@@ -12,12 +12,12 @@ const Title = styled.h1`
   @media (max-width:${rwd.mobile}){
     font-size: 1em;
   }
-`
+`;
 
 const Link = styled.a`
     color: blue;
     font-size: 1.2em;
-`
+`;
 
 export default function StyleComponent () {
   return (
@@ -32,5 +32,5 @@ export default function StyleComponent () {
                 document
             </Link>
         </div>
-  )
+  );
 }

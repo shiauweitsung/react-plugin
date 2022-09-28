@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import {
   Formik,
   FormikHelpers,
@@ -7,8 +7,8 @@ import {
   Field,
   FieldProps,
   ErrorMessage
-} from 'formik'
-import * as Yup from 'yup'
+} from 'formik';
+import * as Yup from 'yup';
 
 interface MyFormValues {
   firstName: string
@@ -19,14 +19,14 @@ const SignupSchema = Yup.object().shape({
     .min(10, 'Too Short!')
     .max(70, 'Too Long!')
     .required('Required')
-})
+});
 
 // 如果要寫成componets
 // <Field /> 要將field參數傳入component,並且在component內 onChange={()=> { field.onChange(event) }}
 // onBlur={(event)=>{ field.onBlur(event) }}
 
 export default function FormikForm () {
-  const initialValues: MyFormValues = { firstName: '' }
+  const initialValues: MyFormValues = { firstName: '' };
   return (
     <div>
       <h1>My Example</h1>
@@ -34,9 +34,9 @@ export default function FormikForm () {
         initialValues={initialValues}
         validationSchema={SignupSchema}
         onSubmit={(values, actions) => {
-          console.log({ values, actions })
-          alert(JSON.stringify(values, null, 2))
-          actions.setSubmitting(false)
+          console.log({ values, actions });
+          alert(JSON.stringify(values, null, 2));
+          actions.setSubmitting(false);
         }}
       >
         {({ errors, touched }) => (
@@ -56,5 +56,5 @@ export default function FormikForm () {
         )}
       </Formik>
     </div>
-  )
+  );
 }

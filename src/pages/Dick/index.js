@@ -1,73 +1,75 @@
-import React, { useState, useRef, useEffect } from 'react'
-import classnames from 'classnames'
+import React, { useState, useRef, useEffect } from 'react';
+import classnames from 'classnames';
 
 const Dick = () => {
-  const [name, setName] = useState('')
-  const [length, setLength] = useState()
-  const [time, setTime] = useState()
+  const [name, setName] = useState('');
+  const [length, setLength] = useState();
+  const [time, setTime] = useState();
   // const [countDownTIme, setCountDownTime] = useState(0);
-  const nameRef = useRef(null)
-  const lengthRef = useRef(null)
-  const timeRef = useRef(null)
-  const [imgWidth, setImgWidth] = useState(length)
+  const nameRef = useRef(null);
+  const lengthRef = useRef(null);
+  const timeRef = useRef(null);
+  const [imgWidth, setImgWidth] = useState(length);
 
-  const [status, setStatus] = useState(false)
+  const [status, setStatus] = useState(false);
   // finished fire
-  const [fire, setFire] = useState(false)
+  const [fire, setFire] = useState(false);
   // dick show
-  const [dickShow, setDickShow] = useState(false)
+  const [dickShow, setDickShow] = useState(false);
 
-  const [countDownSeconds, setCountDownSeconds] = useState(0)
+  const [countDownSeconds, setCountDownSeconds] = useState(0);
 
   const makeClick = () => {
     // const name = nameRef.current.value;
     // const length = lengthRef.current.value;
     // const time = timeRef.current.value;
     if (time <= 0) {
-      alert('你不可能0秒 至少1秒吧')
-      return
+      alert('你不可能0秒 至少1秒吧');
+      return;
     } else if (time > 30) {
-      alert('少騙 你不可能超過30秒')
-      return
+      alert('少騙 你不可能超過30秒');
+      return;
     }
     if (name === '') {
-      alert('請輸入名字')
-      return
+      alert('請輸入名字');
+      return;
     }
     // setCountDownTime(time);
-    setStatus(true)
-    setDickShow(true)
+    setStatus(true);
+    setDickShow(true);
     // 輸入時間
     // const seconds = countDownTIme;
-    const seconds = time
+    const seconds = time;
     // 先讓畫面秒數同步
-    setCountDownSeconds(time)
-    const peTimes = Math.floor(Math.random() * time)
+    setCountDownSeconds(time);
+    const peTimes = Math.floor(Math.random() * time);
     // 現在時間
-    const startTIme = Date.now()
+    const startTIme = Date.now();
     const countDown = setInterval(() => {
       // 下一秒時間
-      const nextSecond = parseInt((Date.now() - startTIme) / 1000)
+      const nextSecond = parseInt((Date.now() - startTIme) / 1000);
       // 倒數時間 = 輸入時間 - 下一秒時間
-      const countDownSec = seconds - nextSecond
-      setCountDownSeconds(countDownSec - peTimes < 0 ? 0 : countDownSec)
+      const countDownSec = seconds - nextSecond;
+      setCountDownSeconds(countDownSec - peTimes < 0
+        ? 0
+        : countDownSec);
       if (countDownSec - peTimes <= 0) {
-        clearInterval(countDown)
-        setCountDownSeconds(0)
-        setTime(0)
-        setFire(true)
-        alert(`opps 你早洩了${peTimes}秒`)
+        clearInterval(countDown);
+        setCountDownSeconds(0);
+        setTime(0);
+        setFire(true);
+        alert(`opps 你早洩了${peTimes}秒`);
       };
-    }, 1000)
-  }
+    }, 1000);
+  };
 
   useEffect(() => {
     setTimeout(() => {
-      setFire(false)
-      setDickShow(false)
-      setStatus(false)
-    }, 2500)
-  }, [fire])
+      setFire(false);
+      setDickShow(false);
+      setStatus(false);
+    }, 2500);
+  }, [fire]);
 
   // useEffect(() => {
   //     //輸入時間
@@ -109,7 +111,7 @@ const Dick = () => {
                             name="name"
                             value={name}
                             onChange={(event) => {
-                              setName(event.target.value)
+                              setName(event.target.value);
                             }}
                             ref={nameRef}
                             disabled={status}
@@ -124,21 +126,21 @@ const Dick = () => {
                             value={length}
                             placeholder="enter your dick length"
                             onChange={(event) => {
-                              setLength(event.target.value)
+                              setLength(event.target.value);
 
                               if (length > 30) {
-                                alert('別騙了 你沒有超過30cm')
-                                setLength('1')
-                                setImgWidth('1')
+                                alert('別騙了 你沒有超過30cm');
+                                setLength('1');
+                                setImgWidth('1');
                               } else {
-                                setImgWidth(event.target.value)
+                                setImgWidth(event.target.value);
                               }
                             }}
                             onBlur={() => {
                               if (length > 30) {
-                                alert('別騙了 你沒有超過30cm')
-                                setLength('1')
-                                setImgWidth('1')
+                                alert('別騙了 你沒有超過30cm');
+                                setLength('1');
+                                setImgWidth('1');
                               }
                             }}
                             ref={lengthRef}
@@ -153,15 +155,15 @@ const Dick = () => {
                             value={time}
                             placeholder="enter your DIY time"
                             onChange={(event) => {
-                              setTime(event.target.value)
+                              setTime(event.target.value);
                             }}
                             onBlur={() => {
                               if (time < 1) {
-                                alert('至少一秒吧')
-                                setTime('1')
+                                alert('至少一秒吧');
+                                setTime('1');
                               } else if (time <= 0) {
-                                alert('至少一秒吧')
-                                setTime('1')
+                                alert('至少一秒吧');
+                                setTime('1');
                               }
                             }}
                             ref={timeRef}
@@ -212,7 +214,7 @@ const Dick = () => {
 
             </div>
         </div>
-  )
-}
+  );
+};
 
-export default Dick
+export default Dick;

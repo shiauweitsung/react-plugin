@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 // Ib age屬性為可有可無
 type Ib = {
@@ -14,15 +14,15 @@ type Ic = {
 type Id = (a: number, b: number) => number
 
 function d<Id>(n1: number, n2: number) {
-  console.log(n1 + n2)
-  return n1 + n2
+  console.log(n1 + n2);
+  return n1 + n2;
 }
 // Ie 字串array
 type Ie = string[] | Array<string> // 這兩個是一樣意思
-const e: Ie = ['1']
+const e: Ie = ['1'];
 // Ie 數值array
 type If = number[] | Array<number> // 這兩個是一樣意思
-const f: If = [1]
+const f: If = [1];
 //
 enum Gender {
   Male = 0,
@@ -31,8 +31,8 @@ enum Gender {
 const i: { name: string; gender: Gender } = {
   name: 'jack',
   gender: Gender.Female
-}
-console.log(i.gender)
+};
+console.log(i.gender);
 
 function TypeScriptCom() {
   return (
@@ -49,13 +49,13 @@ function TypeScriptCom() {
       </p>
       <button
         onClick={() => {
-          d(1, 2)
+          d(1, 2);
         }}
       >
         d func
       </button>
     </div>
-  )
+  );
 }
 
-export default TypeScriptCom
+export default TypeScriptCom;
