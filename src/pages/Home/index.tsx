@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 type Props = {
-  a: String
-}
+  a: String;
+};
 
-export default function Home (props: Props) {
+const data = [
+  {
+    name: 'jack',
+    age: 1,
+  },
+  {
+    name: 'jack2',
+    age: 2,
+  },
+  {
+    name: 'jack3',
+    age: 3,
+  },
+];
+
+export default function Home(props: Props) {
+  useEffect(() => {
+    data.forEach((item, index, self) => {
+      console.log(item, index, self, 'self');
+    });
+  }, []);
   return (
     <div>
       home 組件

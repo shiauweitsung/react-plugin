@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import transactionPreviewModule from '@web3-onboard/transaction-preview';
+
 import { init, useConnectWallet, useSetChain } from '@web3-onboard/react';
 // import Onboard from '@web3-onboard/core'
 import injectedModule from '@web3-onboard/injected-wallets';
@@ -9,8 +12,18 @@ import walletAddressValidatorMinJs from '@swyftx/api-crypto-address-validator/di
 import { carbonWallet } from './injectCarbon';
 import abi from './abi.json';
 
+const transactionPreview = transactionPreviewModule(
+  // Optional initialization object
+  {
+    // Optional: Require balance change approval prior to sending transaction to wallet
+    // Defaults to true
+    requireTransactionApproval: false,
+    //  i18n?: i18nOptions - Internationalization options
+  }
+);
+
 const injected = injectedModule({
-  custom: [carbonWallet]
+  custom: [carbonWallet],
 });
 
 // const infuraKey = '<INFURA_KEY>';
@@ -31,46 +44,48 @@ const rpcUrl = 'https://mainnet.infura.io/v3';
 
 // initialize Onboard
 init({
+  // transactionPreview,
+  apiKey: '98378552-e1a9-4073-87e6-92a0aee22b9c',
   wallets: [injected],
   chains: [
     {
       id: '0x1',
       token: 'ETH',
       label: 'Ethereum Mainnet',
-      rpcUrl
+      rpcUrl,
     },
     {
       id: '0x38',
       token: 'BNB',
       label: 'Smart Chain Mainnet',
       rpcUrl: 'https://bsc-dataseed.binance.org/',
-      blockExplorerUrl: 'https://bscscan.com/'
+      blockExplorerUrl: 'https://bscscan.com/',
     },
     {
       id: '0x343A',
       token: 'TACT',
       label: 'Amino X Testnet',
       rpcUrl: 'https://aminoxtestnet.node.alphacarbon.network/',
-      blockExplorerUrl:
-        'https://aminoxtestnet.blockscout.alphacarbon.network/'
-    }
+      blockExplorerUrl: 'https://aminoxtestnet.blockscout.alphacarbon.network/',
+    },
   ],
   appMetadata: {
     name: 'React plugin onboard',
     icon: onboardIcon,
-    description: 'test onboard'
-  }
+    description: 'test onboard',
+  },
 });
 
-export default function Onboards () {
-  const [{ wallet, connecting }, connect, disconnect, updateBalances] = useConnectWallet();
+export default function Onboards() {
+  const [{ wallet, connecting }, connect, disconnect, updateBalances] =
+    useConnectWallet();
   const [
     // {
     // chains, // the list of chains that web3-onboard was initialized with
     // connectedChain, // the current chain the user's wallet is connected to
     // settingChain, // boolean indicating if the chain is in the process of being set
     // },
-    setChain // function to call to initiate user to switch chains in their wallet
+    setChain, // function to call to initiate user to switch chains in their wallet
   ] = useSetChain();
   // console.log(chains, connectedChain, settingChain, setChain);
   // create an ethers provider
@@ -117,13 +132,17 @@ export default function Onboards () {
   }, [tokenBalance]);
 
   return (
-    <div className='onboard'>
+    <div className="onboard">
       connect wallet page
+      <br />
+      <NavLink to="/autoConnected"> 前往自動連線wallet</NavLink>
       <button
         disabled={connecting}
-        onClick={() => (wallet
-          ? disconnect({ label: wallet.label })
-          : connect())}
+        onClick={() =>
+          wallet
+            ? disconnect({ label: wallet.label })
+            : connect()
+        }
       >
         {connecting
           ? 'connecting'
@@ -131,113 +150,134 @@ export default function Onboards () {
             ? 'disconnect'
             : 'connect'}
       </button>
-      <button onClick={() => {
-        updateBalances();
-      }}>
+      <button
+        onClick={() => {
+          updateBalances();
+        }}
+      >
         update balance
       </button>
-      <button onClick={async () => {
-        await setChain({
-          chainId: '0x343a'
-        });
-      }}>
+      <button
+        onClick={async () => {
+          await setChain({
+            chainId: '0x343a',
+          });
+        }}
+      >
         click set aminoX chain
       </button>
-      <button onClick={async () => {
-        const carbon = window.carbon;
-        const accounts = await carbon.request({ method: 'eth_requestAccounts' });
-        setAccount(accounts);
-      }}>
+      <button
+        onClick={async () => {
+          const carbon = window.carbon;
+          const accounts = await carbon.request({
+            method: 'eth_requestAccounts',
+          });
+          setAccount(accounts);
+        }}
+      >
         get Account
       </button>
-      <button onClick={async () => {
-        const carbon = window.carbon;
-        const tokenAddress = '0xCb5e100fdF7d24f25865fa85673D9bD6Bb4674ab';
-        const tokenSymbol = 'TACT';
-        const tokenDecimals = 18;
-        const tokenImage = 'http://placekitten.com/200/300';
-        try {
-          // wasAdded is a boolean. Like any RPC method, an error may be thrown.
-          const wasAdded = await carbon.request({
-            method: 'wallet_watchAsset',
-            params: {
-              type: 'ERC20', // Initially only supports ERC20, but eventually more!
-              options: {
-                address: tokenAddress, // The address that the token is at.
-                symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
-                decimals: tokenDecimals, // The number of decimals in the token
-                image: tokenImage // A string url of the token logo
-              }
-            }
-          });
+      <button
+        onClick={async () => {
+          const carbon = window.carbon;
+          const tokenAddress = '0xCb5e100fdF7d24f25865fa85673D9bD6Bb4674ab';
+          const tokenSymbol = 'TACT';
+          const tokenDecimals = 18;
+          const tokenImage = 'http://placekitten.com/200/300';
+          try {
+            // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+            const wasAdded = await carbon.request({
+              method: 'wallet_watchAsset',
+              params: {
+                type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                options: {
+                  address: tokenAddress, // The address that the token is at.
+                  symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+                  decimals: tokenDecimals, // The number of decimals in the token
+                  image: tokenImage, // A string url of the token logo
+                },
+              },
+            });
 
-          if (wasAdded) {
-            console.log('Thanks for your interest!');
-          } else {
-            console.log('Your loss!');
+            if (wasAdded) {
+              console.log('Thanks for your interest!');
+            } else {
+              console.log('Your loss!');
+            }
+          } catch (error) {
+            console.log(error);
           }
-        } catch (error) {
-          console.log(error);
-        }
-      }}>
+        }}
+      >
         add token
       </button>
-      <button onClick={async () => {
-        const carbon = window.carbon;
-        carbon.request({
-          method: 'eth_getBalance',
-          params: ['0xE399C86c2370cCe714841e4d869e61450CD9f9de', 'latest']
-        })
-          .then((txHash) => console.log(txHash))
-          .catch((error) => console.log(error));
-      }}>
+      <button
+        onClick={async () => {
+          const carbon = window.carbon;
+          carbon
+            .request({
+              method: 'eth_getBalance',
+              params: ['0xE399C86c2370cCe714841e4d869e61450CD9f9de', 'latest'],
+            })
+            .then((txHash) => console.log(txHash))
+            .catch((error) => console.log(error));
+        }}
+      >
         get balance
       </button>
-      <button onClick={async () => {
-        // const contract = new ethers.Contract(
-        //     '0xCb5e100fdF7d24f25865fa85673D9bD6Bb4674ab',
-        //     contractAbi,
-        //     carbonProvider.getSigner(),
-        // );
-        const contract = new ethers.Contract(
-          '0xCb5e100fdF7d24f25865fa85673D9bD6Bb4674ab',
-          abi,
-          carbonProvider.getSigner()
-        );
-        console.log(contract, 'contract');
-        // const balance = (
-        //     await contract.balanceOf((await carbonProvider.getSigner())))
-        const balance = (
-          await contract.balanceOf(('0xE399C86c2370cCe714841e4d869e61450CD9f9de')));
+      <button
+        onClick={async () => {
+          // const contract = new ethers.Contract(
+          //     '0xCb5e100fdF7d24f25865fa85673D9bD6Bb4674ab',
+          //     contractAbi,
+          //     carbonProvider.getSigner(),
+          // );
+          const contract = new ethers.Contract(
+            '0xCb5e100fdF7d24f25865fa85673D9bD6Bb4674ab',
+            abi,
+            carbonProvider.getSigner()
+          );
+          console.log(contract, 'contract');
+          // const balance = (
+          //     await contract.balanceOf((await carbonProvider.getSigner())))
+          const balance = await contract.balanceOf(
+            '0xE399C86c2370cCe714841e4d869e61450CD9f9de'
+          );
 
-        setTokenBalance(balance);
-      }}>
+          setTokenBalance(balance);
+        }}
+      >
         get token balance
       </button>
-      <button onClick={() => {
-        const carbon = window.carbon;
-        carbon.request({
-          method: 'eth_sendTransaction',
-          params: [
-            {
-              from: account[0],
-              to: '0xE399C86c2370cCe714841e4d869e61450CD9f9de',
-              value: '0x29a2241af62c0000',
-              gasPrice: '0x09184e72a000',
-              gas: '0x5208'
-            }
-          ]
-        })
-          .then((txHash) => console.log(txHash))
-          .catch((error) => console.log(error));
-      }}>
+      <button
+        onClick={() => {
+          const carbon = window.carbon;
+          carbon
+            .request({
+              method: 'eth_sendTransaction',
+              params: [
+                {
+                  from: account[0],
+                  to: '0xE399C86c2370cCe714841e4d869e61450CD9f9de',
+                  value: '0x29a2241af62c0000',
+                  gasPrice: '0x09184e72a000',
+                  gas: '0x5208',
+                },
+              ],
+            })
+            .then((txHash) => console.log(txHash))
+            .catch((error) => console.log(error));
+        }}
+      >
         sign Transaction
       </button>
       <br />
-      <label style={{ display: 'block', marginTop: '24px' }} htmlFor="address">Tron address validate</label>
+      <label style={{ display: 'block', marginTop: '24px' }} htmlFor="address">
+        Tron address validate
+      </label>
       <input
         style={{
-          width: '300px'
+          width: '300px',
         }}
         type="text"
         name="address"
@@ -247,7 +287,6 @@ export default function Onboards () {
       {errorTron
         ? <>error</>
         : null}
-
     </div>
   );
 }

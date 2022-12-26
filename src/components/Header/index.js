@@ -66,7 +66,7 @@ export default function Header(props) {
     color: 'white'
   };
   const headerShow = useSelector(getHederShow);
-  console.log(headerShow, 'headerShow');
+  // console.log(headerShow, 'headerShow');
 
   return (
     <header className="App-header">

@@ -3160,7 +3160,26 @@
     ethers "5.5.4"
     joi "^17.6.1"
 
-"@web3-onboard/core@^2.3.2", "@web3-onboard/core@^2.8.5":
+"@web3-onboard/core@^2.12.1":
+  version "2.12.1"
+  resolved "https://registry.yarnpkg.com/@web3-onboard/core/-/core-2.12.1.tgz#e6dae9eaad1e572cfafe4ceaedd803a9a40224f0"
+  integrity sha512-WqDXHJ28hkJACJYv85iqYfiRm1Nn5BDrvKYwWm6LOQI9J2YuaVYr9c99WRLQzP7x42E/QKVTopn/gATdKY0VQQ==
+  dependencies:
+    "@web3-onboard/common" "^2.2.3"
+    bignumber.js "^9.0.0"
+    bnc-sdk "^4.6.2"
+    bowser "^2.11.0"
+    ethers "5.5.3"
+    eventemitter3 "^4.0.7"
+    joi "^17.6.1"
+    lodash.merge "^4.6.2"
+    lodash.partition "^4.6.0"
+    nanoid "^4.0.0"
+    rxjs "^7.5.5"
+    svelte "^3.49.0"
+    svelte-i18n "^3.3.13"
+
+"@web3-onboard/core@^2.8.5":
   version "2.8.5"
   resolved "https://registry.yarnpkg.com/@web3-onboard/core/-/core-2.8.5.tgz#1a53da35620f8519af0eacda017385c67a69c5b9"
   integrity sha512-MxyhA4E8uivWUxh+HHIuFEeQ8YhAesvD08cCD1NExrTgLogyLovvnuFuE7zwMJaEF7s2U33s1O31kBoy1We95A==
@@ -3179,23 +3198,36 @@
     svelte "^3.49.0"
     svelte-i18n "^3.3.13"
 
-"@web3-onboard/injected-wallets@^2.0.15":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@web3-onboard/injected-wallets/-/injected-wallets-2.2.4.tgz#93508d73febbc7e688fa9775af39b9c819216f35"
-  integrity sha512-95r31Wpy4pFWMEn7T0Vm2hf1dCiiLO9aUMWqMdWB+ypYiRu/BGl/3ualXsZ2pfI4ze8TmGu+rjaLL3z+ga+4rg==
+"@web3-onboard/injected-wallets@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@web3-onboard/injected-wallets/-/injected-wallets-2.4.0.tgz#84e48830605f899601aadc3bc7c79d1ed5787534"
+  integrity sha512-v27NdfD5vemPTNhqk+7gpMYXuTDsHTSPWWdJt6ybJoks6GlRSgF1fnCkmERNzo3+9S97fEKrzHrlSkpsFgn2Mw==
   dependencies:
     "@web3-onboard/common" "^2.2.3"
     joi "^17.6.1"
     lodash.uniqby "^4.7.0"
 
-"@web3-onboard/react@^2.2.5":
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/@web3-onboard/react/-/react-2.3.5.tgz#9244dbd6bca1f086d700e9636ffb9062930591a4"
-  integrity sha512-zCj3BYhzWuIG3dDJelh4K3fepr4clxfk7dldt48oPwnMH0MkZKjidzJP2lX19rq4Llz0uQDgYmxz54oaa2Hpmw==
+"@web3-onboard/react@^2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@web3-onboard/react/-/react-2.5.3.tgz#8509a45851f843c62aabc564ef6211370decb29d"
+  integrity sha512-bFM2mKhoYuwdBd/JFodiDg+Xfmh7WBSyBs1kOo6CVlS5KNnb9CQ61V6yyJnQjBIBUWam70E7qR/X5mFE6ouihg==
   dependencies:
     "@web3-onboard/common" "^2.2.3"
-    "@web3-onboard/core" "^2.8.5"
+    "@web3-onboard/core" "^2.12.1"
     use-sync-external-store "1.0.0"
+
+"@web3-onboard/transaction-preview@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@web3-onboard/transaction-preview/-/transaction-preview-2.0.0.tgz#8c610e414bca9c600d4b02761b596793616ad217"
+  integrity sha512-Gom08bUYpVGElZ5Rz63ToYGVCE3/aq/jdD8aXNoPwVO/+iZ6iwnoaMCg/J3WN6+186oIYSm+e9g4Sn4GadtvNg==
+  dependencies:
+    "@web3-onboard/common" "^2.2.3"
+    bnc-sdk "^4.6.2"
+    bowser "^2.11.0"
+    joi "^17.6.1"
+    rxjs "^7.5.2"
+    svelte "^3.49.0"
+    svelte-i18n "^3.3.13"
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
@@ -3328,17 +3360,17 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zxing/browser@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@zxing/browser/-/browser-0.0.5.tgz#cf54a4eaf5551a871df7e58d091a420768586e34"
-  integrity sha512-nIdOV3Yx6NKNuHYRvcSng9qnYoe0Apu8T0E9NNk7tinCGpF/vjnBXMaiugAy00NDI+UyKr3QTWYQrpweDuMMdw==
-  optionalDependencies:
-    "@zxing/text-encoding" "^0.9.0"
-
 "@zxing/browser@0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@zxing/browser/-/browser-0.0.7.tgz#5fa7680a867b660f48d3288fdf63e0174ad531c7"
   integrity sha512-AepzMgDnD6EjxewqmXpHJsi4S3Gw9ilZJLIbTf6fWuWySEcHBodnGu3p7FWlgq1Sd5QyfPhTum5z3CBkkhMVng==
+  optionalDependencies:
+    "@zxing/text-encoding" "^0.9.0"
+
+"@zxing/browser@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@zxing/browser/-/browser-0.1.1.tgz#f5d6c0a57bda3b223539eadfa3d87c1260e0536f"
+  integrity sha512-fdcHrvvno1NnoiY5++kn/h2b9QnBNyqtK1JqbfY3dfmTdwyXCJr/aT2ZGyRcfe0D3I/THu1I5VJAcpoU0svQMQ==
   optionalDependencies:
     "@zxing/text-encoding" "^0.9.0"
 
@@ -3958,6 +3990,16 @@ bnc-sdk@^4.4.1:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/bnc-sdk/-/bnc-sdk-4.6.0.tgz#968d80d53863336007b7b46cceff795cb0bc84fe"
   integrity sha512-ESN5pRkbAXwYqcgoi4vuDkVBjdVwV0DcNbQKWShYTh0I0anzsIZd52mKM929HPi4iuSnfmNkqSrDqvFcMCAvFQ==
+  dependencies:
+    crypto-es "^1.2.2"
+    nanoid "^3.3.1"
+    rxjs "^6.6.3"
+    sturdy-websocket "^0.1.12"
+
+bnc-sdk@^4.6.2:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/bnc-sdk/-/bnc-sdk-4.6.3.tgz#c852f091a5e84bb77864543b0775b35ebdbb1724"
+  integrity sha512-rva+LyJuAm+U6xwZYqlsDxKaMy3EpHBqkOL93UDih7iwXDYnUr87n27pnGCw3B8xRBeRhCBC/VZMuzRFeea/Hw==
   dependencies:
     crypto-es "^1.2.2"
     nanoid "^3.3.1"
@@ -5621,7 +5663,7 @@ ethers@5.5.4:
     "@ethersproject/web" "5.5.1"
     "@ethersproject/wordlists" "5.5.0"
 
-ethers@^5.6.9:
+ethers@^5.7.1:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.7.1.tgz#48c83a44900b5f006eb2f65d3ba6277047fd4f33"
   integrity sha512-5krze4dRLITX7FpU8J4WscXqADiKmyeNlylmmDLbS95DaZpBhDe2YSwRQwKXWNyXcox7a3gBgm/MkGXV1O1S/Q==
@@ -9576,6 +9618,13 @@ rxjs@^7.5.2:
   version "7.5.7"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.7.tgz#2ec0d57fdc89ece220d2e702730ae8f1e49def39"
   integrity sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==
+  dependencies:
+    tslib "^2.1.0"
+
+rxjs@^7.5.5:
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.0.tgz#90a938862a82888ff4c7359811a595e14e1e09a4"
+  integrity sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==
   dependencies:
     tslib "^2.1.0"
 

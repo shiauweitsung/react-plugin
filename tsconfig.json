@@ -6,6 +6,8 @@
       "module": "commonjs",
       "target": "es6",
       "jsx": "react-jsx",
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      // add img load
+      "include": ["src/components", "src/custom.d.ts"]
   }
 }

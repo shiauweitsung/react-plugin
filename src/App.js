@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Invoices from './pages/Invoices';
 import Onboards from './pages/Onboard';
+import AutoConnectWallet from './pages/Onboard/pages';
 import Dick from './pages/Dick';
 import StyleComponent from './pages/StyleComponent';
 import ScanQrCode from './pages/ScanQrcode';
@@ -22,6 +23,7 @@ function App() {
         <Header content="我是header props" />
         <main className="container">
           <Routes>
+            <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/" element={<Home a="錯誤網址傳進來的值" />} />
             <Route path="/about" element={<About />} />
             <Route path="/home" element={<Home a="1" />} />
@@ -35,8 +37,8 @@ function App() {
               </main>
             }
           /> */}
-            <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/onboard" element={<Onboards />} />
+            <Route path="/autoConnected" element={<AutoConnectWallet />} />
             <Route path="/dick" element={<Dick />} />
             <Route path="/style_component" element={<StyleComponent />} />
             <Route path="/scan-qrcode" element={<ScanQrCode />} />
